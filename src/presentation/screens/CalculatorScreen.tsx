@@ -12,8 +12,8 @@ export const CalculatorScreen = () => {
     clean,
     deleteDigit,
     divideOperation,
+    formula,
     multiplyOperation,
-    number,
     prevNumber,
     subtractOperation,
     toggleSign,
@@ -32,11 +32,13 @@ export const CalculatorScreen = () => {
     <View style={calculatorContainer}>
       <View style={displayContainer}>
         <Text adjustsFontSizeToFit numberOfLines={1} style={mainResult}>
-          {number}
+          {formula}
         </Text>
-        <Text adjustsFontSizeToFit numberOfLines={1} style={subResult}>
-          {prevNumber === '0' ? '' : prevNumber}
-        </Text>
+        {prevNumber === formula ? null : (
+          <Text adjustsFontSizeToFit numberOfLines={1} style={subResult}>
+            {prevNumber === '0' ? '' : prevNumber}
+          </Text>
+        )}
       </View>
       <View style={buttonRow}>
         <Button onPress={clean} label={'C'} color={lightGray} blackText />
